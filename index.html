@@ -19,7 +19,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 
 .question-card{background:#1a2837;border-radius:12px;padding:24px 20px;margin-bottom:20px;}
 .question-num{font-size:12px;color:#3d7fc4;margin-bottom:12px;letter-spacing:1px;}
-.question-blade{font-size:11px;color:#e8a03d;margin-bottom:6px;letter-spacing:1px;}
 .question-text{font-size:17px;color:#e8eaed;margin-bottom:24px;line-height:1.6;}
 .options{display:flex;flex-direction:column;gap:12px;}
 .option{background:#0f1923;border:1px solid #2a3a4a;border-radius:8px;padding:16px;cursor:pointer;transition:all 0.2s;font-size:15px;color:#b0bccc;}
@@ -31,11 +30,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 .result-card{background:#1a2837;border-radius:12px;padding:32px 24px;text-align:center;}
 .result-title{font-size:22px;color:#e8eaed;margin-bottom:8px;font-weight:bold;}
 .result-sub{font-size:14px;color:#5a8ab8;margin-bottom:28px;}
-.blade-result{background:#0f1923;border-radius:8px;padding:16px;margin-bottom:14px;text-align:left;border-left:3px solid #3d7fc4;}
-.blade-name{font-size:15px;color:#e8a03d;font-weight:bold;margin-bottom:6px;}
-.blade-status{font-size:13px;color:#5a8ab8;margin-bottom:8px;}
-.blade-desc{font-size:14px;color:#b0bccc;line-height:1.7;}
-.blade-question{font-size:14px;color:#e8eaed;margin-top:10px;padding-top:10px;border-top:1px dashed #2a3a4a;}
+.item-result{background:#0f1923;border-radius:8px;padding:16px;margin-bottom:14px;text-align:left;border-left:3px solid #3d7fc4;}
+.item-name{font-size:15px;color:#e8a03d;font-weight:bold;margin-bottom:6px;}
+.item-status{font-size:13px;color:#5a8ab8;margin-bottom:8px;}
+.item-desc{font-size:14px;color:#b0bccc;line-height:1.7;}
+.item-suggest{font-size:14px;color:#3d7fc4;margin-top:10px;padding-top:10px;border-top:1px dashed #2a3a4a;line-height:1.7;}
+.item-suggest strong{color:#5ab4e8;}
 .result-cta{font-size:14px;color:#5a8ab8;margin-top:28px;padding-top:24px;border-top:1px solid #2a3a4a;line-height:1.8;}
 .result-cta a{color:#3d7fc4;text-decoration:none;border-bottom:1px dashed #3d7fc4;padding-bottom:1px;}
 
@@ -57,23 +57,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 <div class="container">
   <div class="brand">
     <div class="brand-name">广安曾老师</div>
-    <div class="brand-tag">用5把刀拆教育系统</div>
+    <div class="brand-tag">20年教育系统内部人，帮你少走弯路</div>
   </div>
 
   <div id="startPage">
     <div class="start-card">
       <div class="start-title">你家孩子的教育方向偏了吗？</div>
-      <div class="start-sub">5道题 · 2分钟 · 帮你照照教育决策的镜子</div>
+      <div class="start-sub">5道题 · 2分钟 · 曾老师帮你照照镜子</div>
       <div class="start-desc">
-        你给孩子报班、择校、盯着成绩——做得越多，有时候反而越慌。<br>
-        可能不是你不够用心，是有些决策方向偏了。<br><br>
+        我在广安教育系统干了20年，管过上万个学生。<br>
+        见过太多家长——不是不用心，是方向偏了，越用力越偏。<br><br>
         <strong>这个测试帮你看一件事：</strong><br>
-        你在教育孩子的5个关键决策上，有没有掉进5个系统性陷阱。<br><br>
-        不打分，不评判，只帮你看见。<br>
-        看见，是改变的第一步。
+        在5个最关键的教育决策上，你有没有踩中那些最常见的坑。<br><br>
+        不打分，不评判。<br>
+        就是帮你看看，你跟大多数家长一样不一样。
       </div>
       <button class="btn" onclick="startTest()">开始测试</button>
-      <div class="share-tip">测试完会给出你在5个维度的觉察报告</div>
+      <div class="share-tip">做完会给你曾老师的具体建议</div>
     </div>
   </div>
 
@@ -88,12 +88,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 
   <div id="resultPage" class="hidden">
     <div class="result-card">
-      <div class="result-title">你的教育决策觉察报告</div>
-      <div class="result-sub">不是诊断，是镜子。看看你在哪些维度可能需要停下来想想</div>
+      <div class="result-title">你的教育方向体检报告</div>
+      <div class="result-sub">曾老师看了20年的经验，帮你看看哪些地方该调一调</div>
       <div id="resultContent"></div>
       <div class="result-cta">
+        想知道你家孩子的具体情况该怎么调？<br>
         关注「广安曾老师」<br>
-        用系统思维看懂教育怎么运转<br>
+        每篇文章帮你拆一个真实问题<br>
         <a href="https://mp.weixin.qq.com">点击关注公众号</a>
       </div>
     </div>
@@ -104,144 +105,144 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 <script>
 var questions = [
   {
-    blade: "标准错位",
-    text: "你认为决定孩子未来最重要的东西是什么？",
+    text: "你觉得决定孩子未来最重要的是什么？",
     options: [
       {text: "成绩排名，分数是硬通货", type: "trap"},
       {text: "技能特长，多一项本事多条路", type: "trap"},
-      {text: "学历文凭，好学校是好工作的敲门砖", type: "trap"},
-      {text: "判断力和担当，能在复杂局面下做决定", type: "clear"}
+      {text: "学历文凭，好学校才有好工作", type: "trap"},
+      {text: "遇到事情能拿主意、能扛事", type: "clear"}
     ]
   },
   {
-    blade: "重要素轻连接",
     text: "孩子遇到真正困难的时候，他第一个想找谁说？",
     options: [
-      {text: "谁也不找，自己扛", type: "trap"},
-      {text: "找同学或朋友", type: "neutral"},
+      {text: "谁也不找，自己扛着", type: "trap"},
+      {text: "找同学朋友", type: "neutral"},
       {text: "找老师", type: "neutral"},
-      {text: "找父母，他知道我们不会评判他", type: "clear"}
+      {text: "找爸妈，他知道不会挨骂", type: "clear"}
     ]
   },
   {
-    blade: "目标侵蚀",
-    text: "孩子刚出生时你对他的最大期望，跟现在一样吗？",
+    text: "孩子刚出生时你最大的期望，跟现在一样吗？",
     options: [
-      {text: "不一样了，现在最现实的是先考上个好学校", type: "trap"},
-      {text: "差不多，但重心从健康快乐变成了成绩升学", type: "trap"},
+      {text: "不一样了，现在最要紧是先考上个好学校", type: "trap"},
+      {text: "差不多，但重心从健康快乐变成成绩了", type: "trap"},
       {text: "没仔细想过，走一步看一步", type: "neutral"},
-      {text: "一样，还是希望他成为一个独立、健康、有担当的人", type: "clear"}
+      {text: "一样，还是盼着他独立、健康、有担当", type: "clear"}
     ]
   },
   {
-    blade: "结构决定行为",
     text: "孩子最近成绩下降或状态不好，你的第一反应是？",
     options: [
-      {text: "找补习班，加课加量", type: "trap"},
-      {text: "批评孩子，让他端正态度", type: "trap"},
-      {text: "换个学校或换个班，换个环境", type: "trap"},
-      {text: "先想想最近家里或学校发生了什么变化，让他不得不这样", type: "clear"}
+      {text: "赶紧补课，加课加量", type: "trap"},
+      {text: "批评他，让他端正态度", type: "trap"},
+      {text: "是不是该换个班或换个学校", type: "trap"},
+      {text: "先想想最近家里或学校发生了什么变化", type: "clear"}
     ]
   },
   {
-    blade: "反馈延迟",
-    text: "以下哪件事你觉得对孩子最「有用」？",
+    text: "下面哪件事你觉得对孩子最「有用」？",
     options: [
-      {text: "这周考试成绩提高了五分", type: "trap"},
+      {text: "这周考试成绩提高了几分", type: "trap"},
       {text: "这周学会了一个新技能", type: "trap"},
       {text: "这周孩子主动跟你聊了一次心里话", type: "clear"},
-      {text: "这周孩子独立解决了一个真实问题", type: "clear"}
+      {text: "这周孩子自己搞定了一个麻烦事", type: "clear"}
     ]
   }
 ];
 
-var bladeResults = {
-  "标准错位": {
+var results = [
+  {
+    name: "你给孩子定的目标",
     trap: {
-      status: "可能掉进了陷阱",
-      desc: "你可能正在用学校的考核标准（成绩、排名、技能证书）来衡量孩子的未来。但这些是教育系统的标准，不一定是人生的标准。AI时代，技能和分数都在被重新定价——真正稀缺的是判断力、连接力和意义感。",
-      question: "想想：十年后AI把所有可量化的技能都接管了，你孩子手里还剩什么？"
+      status: "这个方向可能要调一调",
+      desc: "你选的是成绩、技能或学历。这些当然重要，但我在学校干了20年，见过太多孩子——成绩好的到了社会上不一定行，技能多的被AI替代得最快。真正拉开差距的，是孩子遇到事情能不能自己拿主意、能不能扛住压力。这些东西学校不考、简历上写不出来，但十年后决定你家孩子值多少钱。",
+      suggest: "不是说不管成绩。而是每天花十分钟想想：今天孩子有没有机会自己做一次决定？哪怕是小事。判断力是练出来的，不是教出来的。"
     },
     clear: {
-      status: "方向清晰",
-      desc: "你的回答说明你在用一个更本质的标准衡量孩子——不是分数和技能，而是判断力和担当。这个标准见效慢、不性感、不能发朋友圈，但它是AI时代真正稀缺的东西。",
-      question: "保持这个方向。但也要问问自己：在日常决策中，你的行为跟这个标准一致吗？"
+      status: "这个方向对的",
+      desc: "你选的是「能拿主意、能扛事」。说实话，能想到这一层的家长不多。这个目标见效慢、不能发朋友圈炫耀，但它是AI时代真正值钱的东西。你的孩子在这一点上已经比别人家孩子多了几分胜算。",
+      suggest: "方向对了，但日常做起来不容易——因为周围所有人都在逼你回到「盯成绩」的老路上。你得顶住这个压力。"
     },
     neutral: {
-      status: "需要停下来想想",
-      desc: "你没有一个明确的衡量标准，这可能意味着你在跟着大流走——别人报班你也报，别人补课你也补。没有自己标准的人，最容易掉进标准错位的陷阱。",
-      question: "花十分钟想想：你衡量孩子「好不好」的标准到底是什么？这个标准是你自己选的，还是系统塞给你的？"
+      status: "这个方向可能要调一调",
+      desc: "你选了技能特长。多学点本事没坏处，但你有没有想过：孩子学的那些技能，十年后还有没有用？编程、书法、钢琴——AI比他做得更好更快。与其让他练十种工具，不如让他练一种能力：看懂问题本质的能力。",
+      suggest: "报班不是不能报，保留孩子真正喜欢的一两个就行。把省下来的时间，花在让他接触真实问题上。"
     }
   },
-  "重要素轻连接": {
+  {
+    name: "你跟孩子的关系",
     trap: {
-      status: "可能掉进了陷阱",
-      desc: "孩子遇到困难不找你，说明你们之间的连接可能断了。你可能给孩子投入了很多要素（报班、买资料、陪读），但忽略了最关键的东西——关系。要素可以花钱买，连接买不到。而且连接一旦断了，修复的成本比报一百个班都高。",
-      question: "想想：你上一次跟孩子聊天（不是问成绩、不是催作业，就是聊天）是什么时候？"
+      status: "这个要重视",
+      desc: "孩子遇到困难不找你，说明他要么觉得说了也没用，要么怕说了挨骂。我在学校见得太多了——很多家长给孩子报班花了几万块，但孩子真正遇到事的时候，连个说话的人都没有。你投的那些钱，叫「要素」。孩子愿意跟你说话，叫「连接」。要素花得到钱买到，连接买不到。",
+      suggest: "今天回去试一件事：跟孩子聊五分钟，不问成绩、不问作业、不催任何事，就听他说。看看他愿不愿意开口。如果不愿意，说明连接已经断了，得慢慢修。"
     },
     clear: {
-      status: "连接还在",
-      desc: "孩子遇到困难愿意找你，说明你们的连接还在。这是你给孩子最值钱的资产——比任何培训班都值钱。连接在，你对他就有影响力；连接断了，你说什么他都听不进去。",
-      question: "继续保持。但注意：连接是需要维护的，不是一劳永逸的。"
+      status: "这个做得好",
+      desc: "孩子遇到困难愿意找你，这是你给他最值钱的东西——比任何培训班都值钱。连接在，你对他就有影响力；连接断了，你说什么他都听不进去。",
+      suggest: "继续保持。但记住：连接不是一劳永逸的，孩子越大越需要你换方式——从「管」变成「听」。"
     },
     neutral: {
-      status: "连接可能在外移",
-      desc: "孩子遇到困难不找你，找同学或老师。这不一定是坏事，但说明你不再是他的第一选择。这可能是因为他在长大，也可能是你们之间的信任在减弱。",
-      question: "想想：孩子上次主动跟你分享心事是什么时候？如果记不清了，可能需要重视了。"
+      status: "这个要注意了",
+      desc: "孩子不找你，找同学或老师。这说明你不是他的第一选择了。可能是他在长大，也可能你们之间的信任在减弱。不是坏事，但值得留意。",
+      suggest: "想想：孩子上次主动跟你分享学校里的事是什么时候？如果记不清了，可能你们之间的距离在拉大。"
     }
   },
-  "目标侵蚀": {
+  {
+    name: "你的教育初心",
     trap: {
-      status: "目标已经被侵蚀了",
-      desc: "你最初的期望可能是健康、快乐、独立。但运行着运行着，目标变成了考上好学校、拿到好分数。这不是你的错——教育系统的运行逻辑会把所有人的目标都拉齐到分数上。但你不警觉的话，孩子会变成一个分数机器，丢掉你最初最看重的东西。",
-      question: "想想：如果孩子考上了好学校但不快乐、不独立，你会满意吗？如果不满意，说明你的初心还在——只是被运行稀释了。"
+      status: "你的初心被悄悄换掉了",
+      desc: "孩子刚出生时你盼的是健康快乐。后来变成了考上好学校、拿好成绩。这不是你的错——是整个系统在拉着所有人往一个方向跑。但你不警觉的话，孩子会变成一个分数机器，丢掉你最初最看重的东西。我在学校见过太多这样的家长——走着走着就忘了当初为什么出发。",
+      suggest: "今天花五分钟想想：如果孩子考上了好学校，但不快乐、不独立，你满意吗？如果不满意，说明你的初心还在——只是被每天的焦虑盖住了。把它找回来。"
     },
     clear: {
-      status: "初心还在",
-      desc: "你的教育目标没有因为系统运行而偏移。你还在坚持最初那个最朴素的标准——独立、健康、有担当。这很难得，因为大多数家长在这个过程中都会被系统的标准替换掉自己的标准。",
-      question: "保持这份清醒。但也要注意：坚持初心不等于不管成绩，而是管成绩的同时不忘记初心。"
+      status: "你的初心还在",
+      desc: "你还记着最初那个最朴素的期望——独立、健康、有担当。这很难得。大多数家长在这个过程中都会被系统的标准替换掉自己的标准，但你没有。",
+      suggest: "保持这份清醒。但也要注意：坚持初心不等于不管成绩，而是管成绩的同时不忘记初心。"
     },
     neutral: {
-      status: "目标可能模糊了",
-      desc: "你可能没有意识到自己的目标在变化。很多家长都是这样——走着走着就忘了当初为什么出发。不是你不在乎，是系统的运行太强势了，它会自动把你拉到它的标准上。",
-      question: "花五分钟想想：孩子刚出生时你对他最大的期望是什么？现在呢？两个答案之间的差距，就是目标侵蚀的程度。"
+      status: "你的初心可能模糊了",
+      desc: "你没仔细想过这个问题。很多家长都这样——不是不在乎，是太忙了，没时间想。但不想清楚，你就会跟着大流走——别人报班你也报，别人补课你也补，最后忘了自己到底要什么。",
+      suggest: "花五分钟想想：孩子刚出生时你对他最大的期望是什么？现在呢？两个答案之间的差距，就是你需要调整的空间。"
     }
   },
-  "结构决定行为": {
+  {
+    name: "你看问题的方式",
     trap: {
-      status: "可能把结构问题当成了人的问题",
-      desc: "你的第一反应是改孩子（批评、加课）或换环境（换学校、换班），但你想过没有——孩子的状态变化，可能不是他自己的问题，而是他身处的结构变了。新换了班主任、同学关系出了问题、家里最近气氛紧张——这些结构性变化才会引发行为变化。改人不如改结构。",
-      question: "想想：孩子最近状态不好的时候，他身边发生了什么变化？不是他做了什么，而是他周围发生了什么。"
+      status: "你可能把环境的问题当成了孩子的问题",
+      desc: "你的第一反应是改孩子——补课、批评、换班。但你想过没有：孩子状态不好，可能不是他自己的问题，是他身边的环境变了。换了班主任、跟同学闹矛盾、家里最近气氛紧张——这些才是根子。你改孩子没用，得改环境。就像庄稼长不好，你不换土，光施肥有什么用？",
+      suggest: "下次孩子状态不好的时候，先别急着批评或补课。先问自己三个问题：最近家里有没有什么变化？孩子跟老师同学的关系有没有变化？孩子的作息有没有变化？找到根子再动手。"
     },
     clear: {
-      status: "在找结构原因",
-      desc: "你的第一反应不是怪孩子，而是看结构——这是非常清醒的思维方式。你意识到孩子的行为是结构的产物，不是他个人的问题。这意味着你在用系统思维看教育，而不是用情绪反应管孩子。",
-      question: "继续保持。找到结构原因后，你能帮孩子改的是结构，不是逼他改行为。"
+      status: "你看问题的方式很清醒",
+      desc: "你的第一反应不是怪孩子，而是先看环境。这是很清醒的做法。你意识到孩子的状态是环境的产物，不是他故意跟你作对。",
+      suggest: "继续保持。找到环境原因之后，你能帮孩子改的是环境，不是逼他改行为。"
     },
     neutral: {
-      status: "需要停下来想想",
-      desc: "你的孩子可能还没有明显的状态变化，或者你还没注意到。但这个维度值得你提前警觉：一旦孩子出了问题，先看结构再看人。",
-      question: "想想：孩子现在的班级、家庭、朋友圈，这三个结构里有没有最近发生变化的？"
+      status: "这个方面可以再想想",
+      desc: "你选了换班或换学校。环境确实重要，但换个环境不一定能解决问题——如果根子在家里，换到哪里都一样。而且频繁换环境本身会让孩子更没有安全感。",
+      suggest: "在换环境之前，先想清楚：问题到底出在学校还是出在家里？如果是家里的气氛让孩子焦虑，换学校解决不了。"
     }
   },
-  "反馈延迟": {
+  {
+    name: "你花时间的方式",
     trap: {
-      status: "可能只关注见效快的东西",
-      desc: "你觉得考试成绩和学会技能最「有用」，因为它们的反馈是即时的——这周学了下周就能看到分。但真正决定孩子未来的东西——判断力、连接力、独立性——见效太慢了，练一年都看不到变化。你的大脑说：看不到效果，别练了。于是你把时间全投给了见效快的技能训练。",
-      question: "想想：十年后回顾今天，你会觉得哪件事更有用——这周多考了五分，还是这周孩子学会了独立做决定？"
+      status: "你可能只在追见效快的东西",
+      desc: "你觉得考试提分和学会技能最有用，因为它们见效快——这周学了下周就能看到成果。但真正决定孩子未来的东西——判断力、跟人相处的能力、独立解决问题的能力——这些东西见效太慢了，练一年都看不到变化。所以很多家长不知不觉就把时间全投给了见效快的，把那些见效慢但更重要的推到了「以后再说」。",
+      suggest: "不用完全停掉补课和技能训练。但每周留一点时间给孩子做这两件事：第一，跟他聊一次心里话（不是问成绩）；第二，让他自己搞定一个麻烦事（你别插手）。这两件事见效慢，但十年后你会感谢自己。"
     },
     clear: {
-      status: "在等那些重要的东西",
-      desc: "你知道聊天、独立解决问题这些事比分数更重要，即使它们见效慢。这说明你在对抗反馈延迟的本能——大多数家长做不到这一点。你愿意等那些重要的东西慢慢长出来，而不是只追那些能立刻看到结果的东西。",
-      question: "继续保持耐心。但也要注意：不能因为「等待」就什么都不做——你要创造让孩子练习判断和连接的机会。"
+      status: "你在等那些重要的东西",
+      desc: "你知道聊天和独立解决问题比分数更重要，即使它们见效慢。这说明你跟大多数家长不一样——你愿意等那些重要的东西慢慢长出来。这不容易，因为周围所有人都在追快。",
+      suggest: "保持耐心。但也要注意：「等」不是什么都不做——你要主动创造让孩子练习判断和连接的机会。"
     },
     neutral: {
-      status: "需要停下来想想",
-      desc: "你可能没有明确区分过「见效快的」和「见效慢但更重要的」东西。教育里最值钱的能力都是延迟反馈的，但系统只奖励即时反馈的东西。",
-      question: "想想：你孩子的时间表里，有多少是在做见效快的事，有多少是在练见效慢但更重要的能力？"
+      status: "这个方面可以再想想",
+      desc: "你选了学会新技能。学技能没坏处，但你有没有想过：孩子学的东西，十年后还有没有用？与其让他练十种可能被淘汰的技能，不如让他练一种永远不过时的能力——遇到事情能自己想办法。",
+      suggest: "报班不是不能报。但每周至少留半天时间，让孩子自己做主——做什么都行，你别安排。独立判断的能力，是在没人安排的时候才长出来的。"
     }
   }
-};
+];
 
 var currentQ = 0;
 var answers = [];
@@ -263,7 +264,6 @@ function renderQuestion() {
   document.getElementById('progressText').textContent = '第 ' + (currentQ + 1) + ' / ' + total + ' 题';
 
   var html = '<div class="question-card">';
-  html += '<div class="question-blade">' + q.blade + '</div>';
   html += '<div class="question-num">第 ' + (currentQ + 1) + ' 题</div>';
   html += '<div class="question-text">' + q.text + '</div>';
   html += '<div class="options">';
@@ -278,7 +278,7 @@ function renderQuestion() {
   document.getElementById('questionContainer').innerHTML = html;
   selectedOption = -1;
   document.getElementById('nextBtn').disabled = true;
-  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '查看觉察报告';
+  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '看曾老师怎么说';
 }
 
 function selectOption(index) {
@@ -293,7 +293,7 @@ function nextQuestion() {
   if (selectedOption < 0) return;
   var q = questions[currentQ];
   var opt = q.options[selectedOption];
-  answers.push({blade: q.blade, type: opt.type, text: opt.text});
+  answers.push({type: opt.type, text: opt.text});
   currentQ++;
   if (currentQ < questions.length) {
     renderQuestion();
@@ -306,28 +306,30 @@ function showResult() {
   document.getElementById('quizPage').classList.add('hidden');
   document.getElementById('resultPage').classList.remove('hidden');
 
-  var trapCount = 0;
+  var needAdjust = 0;
   var html = '';
+  var names = ["你给孩子定的目标", "你跟孩子的关系", "你的教育初心", "你看问题的方式", "你花时间的方式"];
+
   for (var i = 0; i < answers.length; i++) {
     var a = answers[i];
-    var r = bladeResults[a.blade][a.type];
-    if (a.type === 'trap') trapCount++;
+    var r = results[i][a.type];
+    if (a.type === 'trap') needAdjust++;
 
-    html += '<div class="blade-result">';
-    html += '<div class="blade-name">' + a.blade + '</div>';
-    html += '<div class="blade-status">' + r.status + '</div>';
-    html += '<div class="blade-desc">' + r.desc + '</div>';
-    html += '<div class="blade-question">' + r.question + '</div>';
+    html += '<div class="item-result">';
+    html += '<div class="item-name">' + names[i] + '</div>';
+    html += '<div class="item-status">' + r.status + '</div>';
+    html += '<div class="item-desc">' + r.desc + '</div>';
+    html += '<div class="item-suggest"><strong>曾老师的建议：</strong>' + r.suggest + '</div>';
     html += '</div>';
   }
 
   var summary = '';
-  if (trapCount >= 3) {
-    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #e8a03d;line-height:1.8;">你在 ' + trapCount + ' 个维度上可能掉进了陷阱。<br>别慌——看见就是改变的开始。<br>关注「广安曾老师」，每篇文章帮你拆一个陷阱。</div>';
-  } else if (trapCount >= 1) {
-    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #3d7fc4;line-height:1.8;">你在 ' + trapCount + ' 个维度上可能需要停下来想想。<br>不急，先看见，再慢慢调。<br>关注「广安曾老师」，我们一篇一篇文章拆。</div>';
+  if (needAdjust >= 3) {
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #e8a03d;line-height:1.9;">5个方面里有 ' + needAdjust + ' 个可能需要调一调。<br>别慌——我见过太多家长都是这样，不是你一个人。<br>能做完这个测试说明你在想问题了，这已经是改变的第一步。<br>关注「广安曾老师」，我们一篇一篇文章慢慢拆。</div>';
+  } else if (needAdjust >= 1) {
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #3d7fc4;line-height:1.9;">5个方面里有 ' + needAdjust + ' 个可能需要注意。<br>整体方向不错，个别地方调一调就行。<br>关注「广安曾老师」，每篇文章帮你拆一个真实问题。</div>';
   } else {
-    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #4a9d6e;line-height:1.8;">你的教育决策方向整体清晰。<br>继续保持，但别忘了定期回头检查——<br>系统会变，人会松懈，保持清醒本身就是一种能力。</div>';
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #4a9d6e;line-height:1.9;">5个方面整体方向都清晰。<br>你在广安家长里属于很清醒的了。<br>继续保持——但别忘了定期回头看看，<br>孩子越大，环境越复杂，保持清醒本身就是一种能力。</div>';
   }
 
   document.getElementById('resultContent').innerHTML = summary + html;

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>标准错位指数测试 | 广安曾老师</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#0f1923;color:#e8eaed;line-height:1.8;min-height:100vh;}
+.container{max-width:480px;margin:0 auto;padding:24px 20px 60px;}
+.brand{text-align:center;margin-bottom:32px;}
+.brand-name{font-size:14px;color:#5a8ab8;letter-spacing:2px;}
+.brand-tag{font-size:12px;color:#4a6577;margin-top:4px;}
+
+/* 进度条 */
+.progress-wrap{margin-bottom:32px;}
+.progress-bar{height:4px;background:#1a2a3a;border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2b5797,#3d7fc4);border-radius:2px;transition:width 0.4s ease;}
+.progress-text{font-size:12px;color:#5a7a9a;margin-top:8px;text-align:center;}
+
+/* 问题区 */
+.question-card{background:#1a2837;border-radius:12px;padding:24px 20px;margin-bottom:20px;}
+.question-num{font-size:12px;color:#3d7fc4;margin-bottom:12px;letter-spacing:1px;}
+.question-text{font-size:17px;color:#e8eaed;margin-bottom:24px;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:12px;}
+.option{background:#0f1923;border:1px solid #2a3a4a;border-radius:8px;padding:16px;cursor:pointer;transition:all 0.2s;font-size:15px;color:#b0bccc;}
+.option:hover{border-color:#3d7fc4;background:#152535;}
+.option.selected{border-color:#3d7fc4;background:#1a3a5a;color:#e8eaed;}
+.option .label{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;background:#2a3a4a;font-size:13px;margin-right:10px;}
+.option.selected .label{background:#3d7fc4;color:#fff;}
+
+/* 结果页 */
+.result-card{background:#1a2837;border-radius:12px;padding:32px 24px;text-align:center;}
+.result-score{font-size:56px;font-weight:bold;background:linear-gradient(135deg,#3d7fc4,#5ab4e8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.result-label{font-size:16px;color:#5a8ab8;margin-bottom:24px;}
+.result-desc{font-size:15px;color:#b0bccc;line-height:1.8;text-align:left;margin-bottom:24px;padding:16px;background:#0f1923;border-radius:8px;border-left:3px solid #3d7fc4;}
+.result-loop{font-size:14px;color:#888;margin-bottom:16px;text-align:left;}
+.result-loop strong{color:#e8a03d;}
+.result-cta{font-size:14px;color:#5a8ab8;margin-top:24px;padding-top:24px;border-top:1px solid #2a3a4a;}
+.result-cta a{color:#3d7fc4;text-decoration:none;border-bottom:1px dashed #3d7fc4;padding-bottom:1px;}
+
+/* 按钮 */
+.btn{display:block;width:100%;padding:16px;text-align:center;background:linear-gradient(135deg,#2b5797,#3d7fc4);color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;transition:opacity 0.2s;margin-top:16px;}
+.btn:hover{opacity:0.9;}
+.btn:disabled{background:#2a3a4a;color:#5a7a9a;cursor:not-allowed;}
+
+/* 开始页 */
+.start-card{text-align:center;padding:40px 20px;}
+.start-title{font-size:24px;color:#e8eaed;margin-bottom:12px;font-weight:bold;}
+.start-sub{font-size:14px;color:#5a8ab8;margin-bottom:32px;}
+.start-desc{font-size:14px;color:#8899aa;line-height:2;text-align:left;margin-bottom:32px;padding:20px;background:#1a2837;border-radius:8px;}
+.start-desc strong{color:#3d7fc4;}
+
+/* 分享提示 */
+.share-tip{font-size:12px;color:#4a6577;text-align:center;margin-top:24px;}
+
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="brand">
+    <div class="brand-name">广安曾老师</div>
+    <div class="brand-tag">系统建构师 · 拆系统</div>
+  </div>
+
+  <!-- 开始页 -->
+  <div id="startPage">
+    <div class="start-card">
+      <div class="start-title">标准错位指数测试</div>
+      <div class="start-sub">5道题 · 30秒 · 看看你在哪个系统里拼命</div>
+      <div class="start-desc">
+        你天天加班到最晚，年年评优，但心里越来越慌。<br>
+        可能不是你不够拼，是你拼错了方向。<br><br>
+        <strong>这个测试帮你看一件事：</strong><br>
+        你花最多精力达标的那个标准，和真正决定结果的标准，是不是同一个。
+      </div>
+      <button class="btn" onclick="startTest()">开始测试</button>
+      <div class="share-tip">测试完会给出你的"标准错位指数"和一条系统回路建议</div>
+    </div>
+  </div>
+
+  <!-- 问题页 -->
+  <div id="quizPage" class="hidden">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText"></div>
+    </div>
+    <div id="questionContainer"></div>
+    <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+  </div>
+
+  <!-- 结果页 -->
+  <div id="resultPage" class="hidden">
+    <div class="result-card">
+      <div class="result-score" id="score">0</div>
+      <div class="result-label" id="scoreLabel">标准错位指数</div>
+      <div id="resultContent"></div>
+      <div class="result-cta">
+        关注「广安曾老师」<br>
+        用系统思维看懂职场和人生的底层逻辑
+      </div>
+    </div>
+    <button class="btn" onclick="location.reload()" style="margin-top:16px;background:#1a2837;border:1px solid #2a3a4a;">重新测试</button>
+  </div>
+</div>
+
+<script>
+var questions = [
+  {
+    text: "你最近最拼的一件事是什么？",
+    options: [
+      {text: "加班/赶材料/应付考核", score: 2},
+      {text: "考证书/学新技能/提升学历", score: 2},
+      {text: "搞定一个别人搞不定的难题", score: 0},
+      {text: "维护人际关系/拓展人脉", score: 1}
+    ]
+  },
+  {
+    text: "这件事的达标标准是谁定的？",
+    options: [
+      {text: "领导/公司定的考核指标", score: 2},
+      {text: "行业惯例/大家都这么干", score: 2},
+      {text: "我自己定的，我清楚我要什么", score: 0},
+      {text: "说不清，反正一直在追", score: 2}
+    ]
+  },
+  {
+    text: "你有没有想过：真正决定这件事结果的标准，跟你在拼的那个标准，是同一个吗？",
+    options: [
+      {text: "没想过，但被你一说有点慌", score: 2},
+      {text: "想过，但没时间细想", score: 1},
+      {text: "想过，我知道它们不一样，但不知道怎么办", score: 1},
+      {text: "想清楚了，我在对的标准上使劲", score: 0}
+    ]
+  },
+  {
+    text: "过去一年，你最拼的那件事，结果怎么样？",
+    options: [
+      {text: "达标了，但结果不是我想要的", score: 2},
+      {text: "没达标，还在死磕", score: 2},
+      {text: "达标了，结果也不错", score: 0},
+      {text: "说不清好坏，但心里不踏实", score: 1}
+    ]
+  },
+  {
+    text: "如果现在有人告诉你'你拼错了方向'，你的第一反应是？",
+    options: [
+      {text: "不可能，我就是不够拼", score: 2},
+      {text: "可能是吧，但我能怎么办", score: 1},
+      {text: "你说得对，但我不知道正确的方向在哪", score: 1},
+      {text: "我知道方向在哪，只是还没来得及转", score: 0}
+    ]
+  }
+];
+
+var currentQ = 0;
+var answers = [];
+var selectedOption = -1;
+
+function startTest() {
+  document.getElementById('startPage').classList.add('hidden');
+  document.getElementById('quizPage').classList.remove('hidden');
+  currentQ = 0;
+  answers = [];
+  renderQuestion();
+}
+
+function renderQuestion() {
+  var q = questions[currentQ];
+  var total = questions.length;
+  var progress = ((currentQ) / total) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('progressText').textContent = (currentQ + 1) + ' / ' + total;
+
+  var html = '<div class="question-card">';
+  html += '<div class="question-num">第 ' + (currentQ + 1) + ' 题</div>';
+  html += '<div class="question-text">' + q.text + '</div>';
+  html += '<div class="options">';
+  for (var i = 0; i < q.options.length; i++) {
+    html += '<div class="option" onclick="selectOption(' + i + ')" data-index="' + i + '">';
+    html += '<span class="label">' + String.fromCharCode(65 + i) + '</span>';
+    html += q.options[i].text;
+    html += '</div>';
+  }
+  html += '</div></div>';
+
+  document.getElementById('questionContainer').innerHTML = html;
+  selectedOption = -1;
+  document.getElementById('nextBtn').disabled = true;
+  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '查看结果';
+}
+
+function selectOption(index) {
+  var opts = document.querySelectorAll('.option');
+  opts.forEach(function(o) { o.classList.remove('selected'); });
+  opts[index].classList.add('selected');
+  selectedOption = index;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption < 0) return;
+  answers.push(questions[currentQ].options[selectedOption].score);
+  currentQ++;
+  if (currentQ < questions.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizPage').classList.add('hidden');
+  document.getElementById('resultPage').classList.remove('hidden');
+
+  var total = answers.reduce(function(a, b) { return a + b; }, 0);
+  var maxScore = questions.length * 2;
+  var percent = Math.round((total / maxScore) * 100);
+
+  var label, desc, loop;
+  if (total <= 2) {
+    label = '标准对齐型';
+    desc = '你大概率在对的标准上使劲。你清楚自己要什么，也清楚什么才是真正决定结果的。继续走，但别忘了定期回头检查——标准会变，别让自己不知不觉滑到错位的那一侧。';
+    loop = '<strong>你的回路：</strong>对准标准 → 持续投入 → 结果积累 → 正反馈 → 更加投入';
+  } else if (total <= 5) {
+    label = '轻度错位型';
+    desc = '你隐约感觉到哪里不对，但还没停下来想清楚。你的努力不算白费，但有一部分精力确实花在了不决定结果的事情上。现在是个好时机——花十分钟想想：你拼的那件事，真正看的是什么？';
+    loop = '<strong>你正在滑入的回路：</strong>拼命达标 → 精力耗在非关键处 → 结果不如预期 → 加倍努力弥补 → 越来越累';
+  } else if (total <= 8) {
+    label = '明显错位型';
+    desc = '你在错误的系统里拼命。不是你不努力，是你努力的方向跟结果之间隔了一层。你大概率已经感觉到了——那种"明明很拼但心里越来越慌"的感觉。这个信号说明你的身体比你的大脑更诚实。';
+    loop = '<strong>你正在跑的回路：</strong>拼命达标 → 精力耗尽 → 没空做真正重要的事 → 结果不来 → 更加拼命弥补 → 恶性循环';
+  } else {
+    label = '严重错位型';
+    desc = '你正在跑步机上拼命跑，仪表盘数字一直涨，但你根本没往前走一步。好消息是：你已经看到这篇文章了，说明你开始醒了。下一步不是更拼，是停下来，花一天时间想想：你到底在哪个系统里？那个系统真正奖励的是什么？';
+    loop = '<strong>你困在的回路：</strong>拼命达标 → 期待落空 → 怀疑自己不够拼 → 更加拼命 → 期待再次落空 → 崩溃';
+  }
+
+  // 数字动画
+  var scoreEl = document.getElementById('score');
+  var current = 0;
+  var timer = setInterval(function() {
+    current += 2;
+    if (current >= percent) { current = percent; clearInterval(timer); }
+    scoreEl.textContent = current;
+  }, 30);
+
+  document.getElementById('scoreLabel').textContent = label;
+  document.getElementById('resultContent').innerHTML =
+    '<div class="result-desc">' + desc + '</div>' +
+    '<div class="result-loop">' + loop + '</div>' +
+    '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-top:20px;line-height:1.8;">一个锋利问题：<br>你花最多精力达标的那个标准，和真正决定结果的标准，是同一个吗？</div>' +
+    '<div style="font-size:13px;color:#5a8ab8;margin-top:16px;">想清楚了？关注「广安曾老师」，我们一篇文章一把刀，慢慢拆。</div>';
+}
+</script>
+</body>
+</html>

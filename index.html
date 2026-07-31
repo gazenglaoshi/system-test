@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>标准错位指数测试 | 广安曾老师</title>
+<title>你家孩子的教育方向偏了吗？ | 广安曾老师</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#0f1923;color:#e8eaed;line-height:1.8;min-height:100vh;}
@@ -12,15 +12,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 .brand-name{font-size:14px;color:#5a8ab8;letter-spacing:2px;}
 .brand-tag{font-size:12px;color:#4a6577;margin-top:4px;}
 
-/* 进度条 */
 .progress-wrap{margin-bottom:32px;}
 .progress-bar{height:4px;background:#1a2a3a;border-radius:2px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,#2b5797,#3d7fc4);border-radius:2px;transition:width 0.4s ease;}
 .progress-text{font-size:12px;color:#5a7a9a;margin-top:8px;text-align:center;}
 
-/* 问题区 */
 .question-card{background:#1a2837;border-radius:12px;padding:24px 20px;margin-bottom:20px;}
 .question-num{font-size:12px;color:#3d7fc4;margin-bottom:12px;letter-spacing:1px;}
+.question-blade{font-size:11px;color:#e8a03d;margin-bottom:6px;letter-spacing:1px;}
 .question-text{font-size:17px;color:#e8eaed;margin-bottom:24px;line-height:1.6;}
 .options{display:flex;flex-direction:column;gap:12px;}
 .option{background:#0f1923;border:1px solid #2a3a4a;border-radius:8px;padding:16px;cursor:pointer;transition:all 0.2s;font-size:15px;color:#b0bccc;}
@@ -29,29 +28,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 .option .label{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;background:#2a3a4a;font-size:13px;margin-right:10px;}
 .option.selected .label{background:#3d7fc4;color:#fff;}
 
-/* 结果页 */
 .result-card{background:#1a2837;border-radius:12px;padding:32px 24px;text-align:center;}
-.result-score{font-size:56px;font-weight:bold;background:linear-gradient(135deg,#3d7fc4,#5ab4e8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
-.result-label{font-size:16px;color:#5a8ab8;margin-bottom:24px;}
-.result-desc{font-size:15px;color:#b0bccc;line-height:1.8;text-align:left;margin-bottom:24px;padding:16px;background:#0f1923;border-radius:8px;border-left:3px solid #3d7fc4;}
-.result-loop{font-size:14px;color:#888;margin-bottom:16px;text-align:left;}
-.result-loop strong{color:#e8a03d;}
-.result-cta{font-size:14px;color:#5a8ab8;margin-top:24px;padding-top:24px;border-top:1px solid #2a3a4a;}
+.result-title{font-size:22px;color:#e8eaed;margin-bottom:8px;font-weight:bold;}
+.result-sub{font-size:14px;color:#5a8ab8;margin-bottom:28px;}
+.blade-result{background:#0f1923;border-radius:8px;padding:16px;margin-bottom:14px;text-align:left;border-left:3px solid #3d7fc4;}
+.blade-name{font-size:15px;color:#e8a03d;font-weight:bold;margin-bottom:6px;}
+.blade-status{font-size:13px;color:#5a8ab8;margin-bottom:8px;}
+.blade-desc{font-size:14px;color:#b0bccc;line-height:1.7;}
+.blade-question{font-size:14px;color:#e8eaed;margin-top:10px;padding-top:10px;border-top:1px dashed #2a3a4a;}
+.result-cta{font-size:14px;color:#5a8ab8;margin-top:28px;padding-top:24px;border-top:1px solid #2a3a4a;line-height:1.8;}
 .result-cta a{color:#3d7fc4;text-decoration:none;border-bottom:1px dashed #3d7fc4;padding-bottom:1px;}
 
-/* 按钮 */
 .btn{display:block;width:100%;padding:16px;text-align:center;background:linear-gradient(135deg,#2b5797,#3d7fc4);color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;transition:opacity 0.2s;margin-top:16px;}
 .btn:hover{opacity:0.9;}
-.btn:disabled{background:#2a3a4a;color:#5a7a9a;cursor:not-allowed;}
 
-/* 开始页 */
 .start-card{text-align:center;padding:40px 20px;}
 .start-title{font-size:24px;color:#e8eaed;margin-bottom:12px;font-weight:bold;}
 .start-sub{font-size:14px;color:#5a8ab8;margin-bottom:32px;}
 .start-desc{font-size:14px;color:#8899aa;line-height:2;text-align:left;margin-bottom:32px;padding:20px;background:#1a2837;border-radius:8px;}
 .start-desc strong{color:#3d7fc4;}
 
-/* 分享提示 */
 .share-tip{font-size:12px;color:#4a6577;text-align:center;margin-top:24px;}
 
 .hidden{display:none;}
@@ -61,26 +57,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 <div class="container">
   <div class="brand">
     <div class="brand-name">广安曾老师</div>
-    <div class="brand-tag">系统建构师 · 拆系统</div>
+    <div class="brand-tag">用5把刀拆教育系统</div>
   </div>
 
-  <!-- 开始页 -->
   <div id="startPage">
     <div class="start-card">
-      <div class="start-title">标准错位指数测试</div>
-      <div class="start-sub">5道题 · 30秒 · 看看你在哪个系统里拼命</div>
+      <div class="start-title">你家孩子的教育方向偏了吗？</div>
+      <div class="start-sub">5道题 · 2分钟 · 帮你照照教育决策的镜子</div>
       <div class="start-desc">
-        你天天加班到最晚，年年评优，但心里越来越慌。<br>
-        可能不是你不够拼，是你拼错了方向。<br><br>
+        你给孩子报班、择校、盯着成绩——做得越多，有时候反而越慌。<br>
+        可能不是你不够用心，是有些决策方向偏了。<br><br>
         <strong>这个测试帮你看一件事：</strong><br>
-        你花最多精力达标的那个标准，和真正决定结果的标准，是不是同一个。
+        你在教育孩子的5个关键决策上，有没有掉进5个系统性陷阱。<br><br>
+        不打分，不评判，只帮你看见。<br>
+        看见，是改变的第一步。
       </div>
       <button class="btn" onclick="startTest()">开始测试</button>
-      <div class="share-tip">测试完会给出你的"标准错位指数"和一条系统回路建议</div>
+      <div class="share-tip">测试完会给出你在5个维度的觉察报告</div>
     </div>
   </div>
 
-  <!-- 问题页 -->
   <div id="quizPage" class="hidden">
     <div class="progress-wrap">
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -90,15 +86,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
     <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
   </div>
 
-  <!-- 结果页 -->
   <div id="resultPage" class="hidden">
     <div class="result-card">
-      <div class="result-score" id="score">0</div>
-      <div class="result-label" id="scoreLabel">标准错位指数</div>
+      <div class="result-title">你的教育决策觉察报告</div>
+      <div class="result-sub">不是诊断，是镜子。看看你在哪些维度可能需要停下来想想</div>
       <div id="resultContent"></div>
       <div class="result-cta">
         关注「广安曾老师」<br>
-        用系统思维看懂职场和人生的底层逻辑
+        用系统思维看懂教育怎么运转<br>
+        <a href="https://mp.weixin.qq.com">点击关注公众号</a>
       </div>
     </div>
     <button class="btn" onclick="location.reload()" style="margin-top:16px;background:#1a2837;border:1px solid #2a3a4a;">重新测试</button>
@@ -108,51 +104,144 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 <script>
 var questions = [
   {
-    text: "你最近最拼的一件事是什么？",
+    blade: "标准错位",
+    text: "你认为决定孩子未来最重要的东西是什么？",
     options: [
-      {text: "加班/赶材料/应付考核", score: 2},
-      {text: "考证书/学新技能/提升学历", score: 2},
-      {text: "搞定一个别人搞不定的难题", score: 0},
-      {text: "维护人际关系/拓展人脉", score: 1}
+      {text: "成绩排名，分数是硬通货", type: "trap"},
+      {text: "技能特长，多一项本事多条路", type: "trap"},
+      {text: "学历文凭，好学校是好工作的敲门砖", type: "trap"},
+      {text: "判断力和担当，能在复杂局面下做决定", type: "clear"}
     ]
   },
   {
-    text: "这件事的达标标准是谁定的？",
+    blade: "重要素轻连接",
+    text: "孩子遇到真正困难的时候，他第一个想找谁说？",
     options: [
-      {text: "领导/公司定的考核指标", score: 2},
-      {text: "行业惯例/大家都这么干", score: 2},
-      {text: "我自己定的，我清楚我要什么", score: 0},
-      {text: "说不清，反正一直在追", score: 2}
+      {text: "谁也不找，自己扛", type: "trap"},
+      {text: "找同学或朋友", type: "neutral"},
+      {text: "找老师", type: "neutral"},
+      {text: "找父母，他知道我们不会评判他", type: "clear"}
     ]
   },
   {
-    text: "你有没有想过：真正决定这件事结果的标准，跟你在拼的那个标准，是同一个吗？",
+    blade: "目标侵蚀",
+    text: "孩子刚出生时你对他的最大期望，跟现在一样吗？",
     options: [
-      {text: "没想过，但被你一说有点慌", score: 2},
-      {text: "想过，但没时间细想", score: 1},
-      {text: "想过，我知道它们不一样，但不知道怎么办", score: 1},
-      {text: "想清楚了，我在对的标准上使劲", score: 0}
+      {text: "不一样了，现在最现实的是先考上个好学校", type: "trap"},
+      {text: "差不多，但重心从健康快乐变成了成绩升学", type: "trap"},
+      {text: "没仔细想过，走一步看一步", type: "neutral"},
+      {text: "一样，还是希望他成为一个独立、健康、有担当的人", type: "clear"}
     ]
   },
   {
-    text: "过去一年，你最拼的那件事，结果怎么样？",
+    blade: "结构决定行为",
+    text: "孩子最近成绩下降或状态不好，你的第一反应是？",
     options: [
-      {text: "达标了，但结果不是我想要的", score: 2},
-      {text: "没达标，还在死磕", score: 2},
-      {text: "达标了，结果也不错", score: 0},
-      {text: "说不清好坏，但心里不踏实", score: 1}
+      {text: "找补习班，加课加量", type: "trap"},
+      {text: "批评孩子，让他端正态度", type: "trap"},
+      {text: "换个学校或换个班，换个环境", type: "trap"},
+      {text: "先想想最近家里或学校发生了什么变化，让他不得不这样", type: "clear"}
     ]
   },
   {
-    text: "如果现在有人告诉你'你拼错了方向'，你的第一反应是？",
+    blade: "反馈延迟",
+    text: "以下哪件事你觉得对孩子最「有用」？",
     options: [
-      {text: "不可能，我就是不够拼", score: 2},
-      {text: "可能是吧，但我能怎么办", score: 1},
-      {text: "你说得对，但我不知道正确的方向在哪", score: 1},
-      {text: "我知道方向在哪，只是还没来得及转", score: 0}
+      {text: "这周考试成绩提高了五分", type: "trap"},
+      {text: "这周学会了一个新技能", type: "trap"},
+      {text: "这周孩子主动跟你聊了一次心里话", type: "clear"},
+      {text: "这周孩子独立解决了一个真实问题", type: "clear"}
     ]
   }
 ];
+
+var bladeResults = {
+  "标准错位": {
+    trap: {
+      status: "可能掉进了陷阱",
+      desc: "你可能正在用学校的考核标准（成绩、排名、技能证书）来衡量孩子的未来。但这些是教育系统的标准，不一定是人生的标准。AI时代，技能和分数都在被重新定价——真正稀缺的是判断力、连接力和意义感。",
+      question: "想想：十年后AI把所有可量化的技能都接管了，你孩子手里还剩什么？"
+    },
+    clear: {
+      status: "方向清晰",
+      desc: "你的回答说明你在用一个更本质的标准衡量孩子——不是分数和技能，而是判断力和担当。这个标准见效慢、不性感、不能发朋友圈，但它是AI时代真正稀缺的东西。",
+      question: "保持这个方向。但也要问问自己：在日常决策中，你的行为跟这个标准一致吗？"
+    },
+    neutral: {
+      status: "需要停下来想想",
+      desc: "你没有一个明确的衡量标准，这可能意味着你在跟着大流走——别人报班你也报，别人补课你也补。没有自己标准的人，最容易掉进标准错位的陷阱。",
+      question: "花十分钟想想：你衡量孩子「好不好」的标准到底是什么？这个标准是你自己选的，还是系统塞给你的？"
+    }
+  },
+  "重要素轻连接": {
+    trap: {
+      status: "可能掉进了陷阱",
+      desc: "孩子遇到困难不找你，说明你们之间的连接可能断了。你可能给孩子投入了很多要素（报班、买资料、陪读），但忽略了最关键的东西——关系。要素可以花钱买，连接买不到。而且连接一旦断了，修复的成本比报一百个班都高。",
+      question: "想想：你上一次跟孩子聊天（不是问成绩、不是催作业，就是聊天）是什么时候？"
+    },
+    clear: {
+      status: "连接还在",
+      desc: "孩子遇到困难愿意找你，说明你们的连接还在。这是你给孩子最值钱的资产——比任何培训班都值钱。连接在，你对他就有影响力；连接断了，你说什么他都听不进去。",
+      question: "继续保持。但注意：连接是需要维护的，不是一劳永逸的。"
+    },
+    neutral: {
+      status: "连接可能在外移",
+      desc: "孩子遇到困难不找你，找同学或老师。这不一定是坏事，但说明你不再是他的第一选择。这可能是因为他在长大，也可能是你们之间的信任在减弱。",
+      question: "想想：孩子上次主动跟你分享心事是什么时候？如果记不清了，可能需要重视了。"
+    }
+  },
+  "目标侵蚀": {
+    trap: {
+      status: "目标已经被侵蚀了",
+      desc: "你最初的期望可能是健康、快乐、独立。但运行着运行着，目标变成了考上好学校、拿到好分数。这不是你的错——教育系统的运行逻辑会把所有人的目标都拉齐到分数上。但你不警觉的话，孩子会变成一个分数机器，丢掉你最初最看重的东西。",
+      question: "想想：如果孩子考上了好学校但不快乐、不独立，你会满意吗？如果不满意，说明你的初心还在——只是被运行稀释了。"
+    },
+    clear: {
+      status: "初心还在",
+      desc: "你的教育目标没有因为系统运行而偏移。你还在坚持最初那个最朴素的标准——独立、健康、有担当。这很难得，因为大多数家长在这个过程中都会被系统的标准替换掉自己的标准。",
+      question: "保持这份清醒。但也要注意：坚持初心不等于不管成绩，而是管成绩的同时不忘记初心。"
+    },
+    neutral: {
+      status: "目标可能模糊了",
+      desc: "你可能没有意识到自己的目标在变化。很多家长都是这样——走着走着就忘了当初为什么出发。不是你不在乎，是系统的运行太强势了，它会自动把你拉到它的标准上。",
+      question: "花五分钟想想：孩子刚出生时你对他最大的期望是什么？现在呢？两个答案之间的差距，就是目标侵蚀的程度。"
+    }
+  },
+  "结构决定行为": {
+    trap: {
+      status: "可能把结构问题当成了人的问题",
+      desc: "你的第一反应是改孩子（批评、加课）或换环境（换学校、换班），但你想过没有——孩子的状态变化，可能不是他自己的问题，而是他身处的结构变了。新换了班主任、同学关系出了问题、家里最近气氛紧张——这些结构性变化才会引发行为变化。改人不如改结构。",
+      question: "想想：孩子最近状态不好的时候，他身边发生了什么变化？不是他做了什么，而是他周围发生了什么。"
+    },
+    clear: {
+      status: "在找结构原因",
+      desc: "你的第一反应不是怪孩子，而是看结构——这是非常清醒的思维方式。你意识到孩子的行为是结构的产物，不是他个人的问题。这意味着你在用系统思维看教育，而不是用情绪反应管孩子。",
+      question: "继续保持。找到结构原因后，你能帮孩子改的是结构，不是逼他改行为。"
+    },
+    neutral: {
+      status: "需要停下来想想",
+      desc: "你的孩子可能还没有明显的状态变化，或者你还没注意到。但这个维度值得你提前警觉：一旦孩子出了问题，先看结构再看人。",
+      question: "想想：孩子现在的班级、家庭、朋友圈，这三个结构里有没有最近发生变化的？"
+    }
+  },
+  "反馈延迟": {
+    trap: {
+      status: "可能只关注见效快的东西",
+      desc: "你觉得考试成绩和学会技能最「有用」，因为它们的反馈是即时的——这周学了下周就能看到分。但真正决定孩子未来的东西——判断力、连接力、独立性——见效太慢了，练一年都看不到变化。你的大脑说：看不到效果，别练了。于是你把时间全投给了见效快的技能训练。",
+      question: "想想：十年后回顾今天，你会觉得哪件事更有用——这周多考了五分，还是这周孩子学会了独立做决定？"
+    },
+    clear: {
+      status: "在等那些重要的东西",
+      desc: "你知道聊天、独立解决问题这些事比分数更重要，即使它们见效慢。这说明你在对抗反馈延迟的本能——大多数家长做不到这一点。你愿意等那些重要的东西慢慢长出来，而不是只追那些能立刻看到结果的东西。",
+      question: "继续保持耐心。但也要注意：不能因为「等待」就什么都不做——你要创造让孩子练习判断和连接的机会。"
+    },
+    neutral: {
+      status: "需要停下来想想",
+      desc: "你可能没有明确区分过「见效快的」和「见效慢但更重要的」东西。教育里最值钱的能力都是延迟反馈的，但系统只奖励即时反馈的东西。",
+      question: "想想：你孩子的时间表里，有多少是在做见效快的事，有多少是在练见效慢但更重要的能力？"
+    }
+  }
+};
 
 var currentQ = 0;
 var answers = [];
@@ -171,9 +260,10 @@ function renderQuestion() {
   var total = questions.length;
   var progress = ((currentQ) / total) * 100;
   document.getElementById('progressFill').style.width = progress + '%';
-  document.getElementById('progressText').textContent = (currentQ + 1) + ' / ' + total;
+  document.getElementById('progressText').textContent = '第 ' + (currentQ + 1) + ' / ' + total + ' 题';
 
   var html = '<div class="question-card">';
+  html += '<div class="question-blade">' + q.blade + '</div>';
   html += '<div class="question-num">第 ' + (currentQ + 1) + ' 题</div>';
   html += '<div class="question-text">' + q.text + '</div>';
   html += '<div class="options">';
@@ -188,7 +278,7 @@ function renderQuestion() {
   document.getElementById('questionContainer').innerHTML = html;
   selectedOption = -1;
   document.getElementById('nextBtn').disabled = true;
-  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '查看结果';
+  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '查看觉察报告';
 }
 
 function selectOption(index) {
@@ -201,7 +291,9 @@ function selectOption(index) {
 
 function nextQuestion() {
   if (selectedOption < 0) return;
-  answers.push(questions[currentQ].options[selectedOption].score);
+  var q = questions[currentQ];
+  var opt = q.options[selectedOption];
+  answers.push({blade: q.blade, type: opt.type, text: opt.text});
   currentQ++;
   if (currentQ < questions.length) {
     renderQuestion();
@@ -214,44 +306,31 @@ function showResult() {
   document.getElementById('quizPage').classList.add('hidden');
   document.getElementById('resultPage').classList.remove('hidden');
 
-  var total = answers.reduce(function(a, b) { return a + b; }, 0);
-  var maxScore = questions.length * 2;
-  var percent = Math.round((total / maxScore) * 100);
+  var trapCount = 0;
+  var html = '';
+  for (var i = 0; i < answers.length; i++) {
+    var a = answers[i];
+    var r = bladeResults[a.blade][a.type];
+    if (a.type === 'trap') trapCount++;
 
-  var label, desc, loop;
-  if (total <= 2) {
-    label = '标准对齐型';
-    desc = '你大概率在对的标准上使劲。你清楚自己要什么，也清楚什么才是真正决定结果的。继续走，但别忘了定期回头检查——标准会变，别让自己不知不觉滑到错位的那一侧。';
-    loop = '<strong>你的回路：</strong>对准标准 → 持续投入 → 结果积累 → 正反馈 → 更加投入';
-  } else if (total <= 5) {
-    label = '轻度错位型';
-    desc = '你隐约感觉到哪里不对，但还没停下来想清楚。你的努力不算白费，但有一部分精力确实花在了不决定结果的事情上。现在是个好时机——花十分钟想想：你拼的那件事，真正看的是什么？';
-    loop = '<strong>你正在滑入的回路：</strong>拼命达标 → 精力耗在非关键处 → 结果不如预期 → 加倍努力弥补 → 越来越累';
-  } else if (total <= 8) {
-    label = '明显错位型';
-    desc = '你在错误的系统里拼命。不是你不努力，是你努力的方向跟结果之间隔了一层。你大概率已经感觉到了——那种"明明很拼但心里越来越慌"的感觉。这个信号说明你的身体比你的大脑更诚实。';
-    loop = '<strong>你正在跑的回路：</strong>拼命达标 → 精力耗尽 → 没空做真正重要的事 → 结果不来 → 更加拼命弥补 → 恶性循环';
-  } else {
-    label = '严重错位型';
-    desc = '你正在跑步机上拼命跑，仪表盘数字一直涨，但你根本没往前走一步。好消息是：你已经看到这篇文章了，说明你开始醒了。下一步不是更拼，是停下来，花一天时间想想：你到底在哪个系统里？那个系统真正奖励的是什么？';
-    loop = '<strong>你困在的回路：</strong>拼命达标 → 期待落空 → 怀疑自己不够拼 → 更加拼命 → 期待再次落空 → 崩溃';
+    html += '<div class="blade-result">';
+    html += '<div class="blade-name">' + a.blade + '</div>';
+    html += '<div class="blade-status">' + r.status + '</div>';
+    html += '<div class="blade-desc">' + r.desc + '</div>';
+    html += '<div class="blade-question">' + r.question + '</div>';
+    html += '</div>';
   }
 
-  // 数字动画
-  var scoreEl = document.getElementById('score');
-  var current = 0;
-  var timer = setInterval(function() {
-    current += 2;
-    if (current >= percent) { current = percent; clearInterval(timer); }
-    scoreEl.textContent = current;
-  }, 30);
+  var summary = '';
+  if (trapCount >= 3) {
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #e8a03d;line-height:1.8;">你在 ' + trapCount + ' 个维度上可能掉进了陷阱。<br>别慌——看见就是改变的开始。<br>关注「广安曾老师」，每篇文章帮你拆一个陷阱。</div>';
+  } else if (trapCount >= 1) {
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #3d7fc4;line-height:1.8;">你在 ' + trapCount + ' 个维度上可能需要停下来想想。<br>不急，先看见，再慢慢调。<br>关注「广安曾老师」，我们一篇一篇文章拆。</div>';
+  } else {
+    summary = '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-bottom:20px;padding:16px;background:#1a2a3a;border-radius:8px;border-left:3px solid #4a9d6e;line-height:1.8;">你的教育决策方向整体清晰。<br>继续保持，但别忘了定期回头检查——<br>系统会变，人会松懈，保持清醒本身就是一种能力。</div>';
+  }
 
-  document.getElementById('scoreLabel').textContent = label;
-  document.getElementById('resultContent').innerHTML =
-    '<div class="result-desc">' + desc + '</div>' +
-    '<div class="result-loop">' + loop + '</div>' +
-    '<div style="font-size:15px;color:#e8eaed;font-weight:bold;margin-top:20px;line-height:1.8;">一个锋利问题：<br>你花最多精力达标的那个标准，和真正决定结果的标准，是同一个吗？</div>' +
-    '<div style="font-size:13px;color:#5a8ab8;margin-top:16px;">想清楚了？关注「广安曾老师」，我们一篇文章一把刀，慢慢拆。</div>';
+  document.getElementById('resultContent').innerHTML = summary + html;
 }
 </script>
 </body>

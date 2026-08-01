@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>你家孩子的"不肯学"到底是哪一种？ | 广安曾老师</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#0f1923;color:#e8eaed;line-height:1.8;min-height:100vh;}
+.container{max-width:480px;margin:0 auto;padding:24px 20px 60px;}
+
+.start-card{text-align:center;padding:40px 16px;}
+.start-title{font-size:22px;color:#e8eaed;margin-bottom:12px;font-weight:bold;line-height:1.5;}
+.start-sub{font-size:14px;color:#5a8ab8;margin-bottom:28px;}
+.start-desc{font-size:14px;color:#8899aa;line-height:2;text-align:left;margin-bottom:28px;padding:20px;background:#1a2837;border-radius:8px;}
+.start-desc strong{color:#3d7fc4;}
+
+.progress-wrap{margin-bottom:28px;}
+.progress-bar{height:4px;background:#1a2a3a;border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2b5797,#3d7fc4);border-radius:2px;transition:width 0.4s ease;}
+.progress-text{font-size:12px;color:#5a7a9a;margin-top:8px;text-align:center;}
+
+.question-card{background:#1a2837;border-radius:12px;padding:24px 20px;margin-bottom:20px;}
+.question-num{font-size:12px;color:#3d7fc4;margin-bottom:12px;letter-spacing:1px;}
+.question-text{font-size:17px;color:#e8eaed;margin-bottom:24px;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:12px;}
+.option{background:#0f1923;border:1px solid #2a3a4a;border-radius:8px;padding:16px;cursor:pointer;transition:all 0.2s;font-size:15px;color:#b0bccc;line-height:1.6;}
+.option:hover{border-color:#3d7fc4;background:#152535;}
+.option.selected{border-color:#3d7fc4;background:#1a3a5a;color:#e8eaed;}
+.option .label{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;background:#2a3a4a;font-size:13px;margin-right:10px;flex-shrink:0;}
+.option.selected .label{background:#3d7fc4;color:#fff;}
+.option-content{display:flex;align-items:flex-start;}
+.option-content .label{margin-top:2px;}
+.option-content .option-text{flex:1;}
+
+.result-card{background:#1a2837;border-radius:12px;padding:32px 24px;text-align:center;}
+.result-title{font-size:20px;color:#e8eaed;margin-bottom:8px;font-weight:bold;line-height:1.5;}
+.result-sub{font-size:14px;color:#5a8ab8;margin-bottom:24px;}
+.result-type{background:#0f1923;border-radius:8px;padding:20px;margin-bottom:16px;text-align:left;border-left:3px solid #e8a03d;}
+.result-type-label{font-size:13px;color:#5a8ab8;margin-bottom:8px;}
+.result-type-name{font-size:18px;color:#e8a03d;font-weight:bold;margin-bottom:12px;line-height:1.5;}
+.result-type-desc{font-size:15px;color:#b0bccc;line-height:1.8;}
+.result-suggest{background:#0f1923;border-radius:8px;padding:20px;margin-bottom:16px;text-align:left;border-left:3px solid #3d7fc4;}
+.result-suggest-label{font-size:13px;color:#5a8ab8;margin-bottom:8px;}
+.result-suggest-text{font-size:15px;color:#3d7fc4;line-height:1.8;}
+.result-quote{background:#1a2a3a;border-radius:8px;padding:20px;margin-bottom:24px;text-align:left;}
+.result-quote-text{font-size:14px;color:#8899aa;line-height:1.9;font-style:italic;}
+.result-quote-author{font-size:13px;color:#5a7a9a;margin-top:10px;}
+.result-cta{font-size:14px;color:#5a8ab8;margin-top:24px;padding-top:24px;border-top:1px solid #2a3a4a;line-height:1.8;}
+.result-cta a{color:#3d7fc4;text-decoration:none;border-bottom:1px dashed #3d7fc4;padding-bottom:1px;}
+
+.btn{display:block;width:100%;padding:16px;text-align:center;background:linear-gradient(135deg,#2b5797,#3d7fc4);color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;transition:opacity 0.2s;margin-top:16px;}
+.btn:hover{opacity:0.9;}
+.btn-secondary{background:#1a2837;border:1px solid #2a3a4a;}
+
+.tip-card{margin-top:32px;padding:20px;background:#1a2a3a;border-radius:8px;border-left:3px solid #3d7fc4;}
+.tip-text{font-size:14px;color:#5a7a9a;line-height:1.9;}
+
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开始页 -->
+  <div id="startPage">
+    <div class="start-card">
+      <div class="start-title">你家孩子的"不肯学"<br>到底是哪一种？</div>
+      <div class="start-sub">4道题 · 2分钟 · 曾老师帮你照一照</div>
+      <div class="start-desc">
+        我在广安教育系统干了20年，听过几百个家长说"我家孩子很聪明，就是不肯学"。<br><br>
+        但"不肯学"这三个字背后，可能藏着完全不同的原因。<br>
+        有的孩子不是不肯，是<strong>卡住了</strong>。<br>
+        有的不是不肯，是<strong>不会</strong>。<br>
+        有的不是不肯，是<strong>关系出了问题</strong>。<br>
+        有的不是不肯，是<strong>从来没拥有过"肯"的条件</strong>。<br><br>
+        这个小测试帮你看一件事：<br>
+        你家孩子更接近哪一种。<br><br>
+        不打分，不评判。<br>
+        就是帮你看看，你的劲该往哪儿使。
+      </div>
+      <button class="btn" onclick="startTest()">开始</button>
+    </div>
+  </div>
+
+  <!-- 答题页 -->
+  <div id="quizPage" class="hidden">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText"></div>
+    </div>
+    <div id="questionContainer"></div>
+    <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+  </div>
+
+  <!-- 结果页 -->
+  <div id="resultPage" class="hidden">
+    <div class="result-card">
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-sub" id="resultSub"></div>
+      <div id="resultContent"></div>
+      <div class="result-cta">
+        想知道怎么帮孩子找到卡住的地方？<br>
+        关注「广安曾老师」<br>
+        每篇文章帮你拆一个真实的学校真相<br>
+        <a href="https://mp.weixin.qq.com">点击关注公众号</a>
+      </div>
+    </div>
+    <button class="btn btn-secondary" onclick="location.reload()">重新测试</button>
+
+    <!-- 赞赏引导 -->
+    <div class="tip-card">
+      <div class="tip-text">
+        如果这个测试帮到了你，可以关注「广安曾老师」，文章底部有个赞赏按钮。<br><br>
+        不是非要点——曾老师写这些东西主要是想帮家长少走弯路。但如果你觉得有用，点一下也是让曾老师知道，这些东西没白写。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var questions = [
+  {
+    text: "你家孩子写作业的时候，你仔细看过他的样子吗？最接近哪种？",
+    options: [
+      {text: "坐着不动，本子上半天一个字没有，眼神放空", type: "stuck"},
+      {text: "写得挺快，但一看全错，或者只挑简单的写", type: "gap"},
+      {text: "坐几分钟就要起来，上厕所、喝水、看手机", type: "connection"},
+      {text: "你盯着就写一会儿，你一走他就停", type: "environment"}
+    ]
+  },
+  {
+    text: "你最近一次跟他聊学习的事，最后怎么样了？",
+    options: [
+      {text: "他说\"知道了\"，然后没有然后", type: "stuck"},
+      {text: "他说\"我都会\"，但考试成绩上不去", type: "gap"},
+      {text: "没聊几句就吵起来，不欢而散", type: "connection"},
+      {text: "他不愿意跟我聊，一说学习就岔开话题", type: "environment"}
+    ]
+  },
+  {
+    text: "你有没有想过，他\"不肯学\"到底卡在哪？",
+    options: [
+      {text: "没想过，觉得就是懒，催就行了", type: "stuck"},
+      {text: "想过，问过他但他自己也说不清楚", type: "gap"},
+      {text: "想过，觉得可能是我俩之间出了问题", type: "connection"},
+      {text: "想过，可能是家里没人能帮到他", type: "environment"}
+    ]
+  },
+  {
+    text: "如果不催他，他会怎样？",
+    options: [
+      {text: "能不写就不写，一直拖着", type: "stuck"},
+      {text: "会试一下，但很快放弃，说\"不会\"", type: "gap"},
+      {text: "会跟你对着干，你说东他偏往西", type: "connection"},
+      {text: "会去找别人帮忙，但不会找你", type: "environment"}
+    ]
+  }
+];
+
+var results = {
+  stuck: {
+    name: "你看到的\"不肯学\"，可能不是不肯，是卡住了",
+    desc: "他坐在那里不动笔，不是在偷懒，是脑子里一团浆糊，不知道从哪下手。就像文章里说的那个初中生——想学但不知道怎么学，坐在那里像在受刑。他嘴上说\"知道了\"，其实是他不知道该说什么。他不是在跟你对抗，他是在跟自己脑子里那团搞不清楚的东西较劲。",
+    suggest: "别再催了。催一个卡住的人，就像催一个掉进坑里的人快跑——他不是不想跑，是爬不上来。试试换个方式：坐到他旁边，问一句\"哪道题你觉得最难\"，然后从他觉得最难的那道开始，一起拆。不是你教他，是一起看看问题出在哪。如果你自己也不知道怎么拆，找个懂的人帮他看看，比催一百遍管用。",
+    quote: "他不是在跟你对抗，他是在跟自己脑子里那团浆糊较劲。"
+  },
+  gap: {
+    name: "他不是不肯学，是不会学",
+    desc: "他写得快但全错，说\"都会\"但成绩上不去——这不是态度问题，是基础有漏洞。他自己可能都不知道漏洞在哪，只觉得\"好像都懂但做题就不对\"。就像文章里曾老师自己高中物理一样：上课能听懂，做题就不会，每天对着书坐两个小时跟坐牢一样。不是不肯下功夫，是真不知道怎么补。",
+    suggest: "别盯着他的态度了，去看看他的基础。\"都会但做不对\"通常意味着某个环节是夹生的——上课听了个大概，以为自己懂了，其实关键步骤没吃透。你可以做一件事：找他最近做错的两三道题，不是让他重做，是让他给你讲一遍他当时怎么想的。讲到卡住的地方，就是漏洞的位置。找到漏洞再补，比从头到尾刷题管用十倍。",
+    quote: "不是不肯下功夫，是真不知道怎么补，越搞越懵，越懵越焦虑。"
+  },
+  connection: {
+    name: "问题可能不在学习上，在你们的关系上",
+    desc: "他坐不住、跟你吵、一说学习就炸——这些看起来像\"不肯学\"，其实是你们的连接出了问题。他不是在抗拒学习，是在抗拒你管他的方式。就像文章里说的，孩子遇到困难时如果第一个想到的不是你，说明你们的连接已经松了。催一个跟你不亲的孩子学习，他只会越催越远。",
+    suggest: "先别管学习的事。我知道这话说起来容易做起来难，但如果你们的连接断了，你说的任何话他都听不进去。试一件事：接下来一周，每天找五分钟跟孩子聊天，不问成绩、不问作业、不催任何事，就听他说——说什么都行，游戏、同学、八卦，只要他愿意开口。如果一周后他愿意主动跟你说话了，再慢慢把学习的话题带回来。连接在，你才有影响力。",
+    quote: "他不是在抗拒学习，是在抗拒你管他的方式。"
+  },
+  environment: {
+    name: "他不是不肯，是从来没拥有过\"肯\"的条件",
+    desc: "他不找你帮忙、你不在就停、找别人但不找你——这说明他缺的不是态度，是一个能支撑他学习的环境。就像文章里那个学生一样：爸爸在外打工一年回来一次，妈妈开小卖部早出晚归，回家没人管也没人问。不是他不想学，是从来没有人在对的时候拉他一把。\"不肯\"这两个字，对他来说太重了。",
+    suggest: "他需要的不是催促，是陪伴。不是你盯着他写作业那种陪伴，是让他觉得\"有人在\"的陪伴。如果你工作很忙，做不到每天陪，试试这样做：每天哪怕只有十分钟，坐到他旁边，不看手机，不说话，就待着。让他知道你在。然后慢慢把这十分钟变成你们的固定时间——可以聊学习，也可以不聊。重点是让他感觉到，有人在管他，不是在管他的成绩，是在管他这个人。",
+    quote: "他从来没拥有过\"肯\"的条件。"
+  }
+};
+
+var currentQ = 0;
+var answers = [];
+var selectedOption = -1;
+
+function startTest() {
+  document.getElementById('startPage').classList.add('hidden');
+  document.getElementById('quizPage').classList.remove('hidden');
+  currentQ = 0;
+  answers = [];
+  renderQuestion();
+}
+
+function renderQuestion() {
+  var q = questions[currentQ];
+  var total = questions.length;
+  var progress = ((currentQ) / total) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('progressText').textContent = '第 ' + (currentQ + 1) + ' / ' + total + ' 题';
+
+  var html = '<div class="question-card">';
+  html += '<div class="question-num">第 ' + (currentQ + 1) + ' 题</div>';
+  html += '<div class="question-text">' + q.text + '</div>';
+  html += '<div class="options">';
+  for (var i = 0; i < q.options.length; i++) {
+    html += '<div class="option" onclick="selectOption(' + i + ')" data-index="' + i + '">';
+    html += '<div class="option-content">';
+    html += '<span class="label">' + String.fromCharCode(65 + i) + '</span>';
+    html += '<span class="option-text">' + q.options[i].text + '</span>';
+    html += '</div>';
+    html += '</div>';
+  }
+  html += '</div></div>';
+
+  document.getElementById('questionContainer').innerHTML = html;
+  selectedOption = -1;
+  document.getElementById('nextBtn').disabled = true;
+  document.getElementById('nextBtn').textContent = currentQ < total - 1 ? '下一题' : '看曾老师怎么说';
+}
+
+function selectOption(index) {
+  var opts = document.querySelectorAll('.option');
+  opts.forEach(function(o) { o.classList.remove('selected'); });
+  opts[index].classList.add('selected');
+  selectedOption = index;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption < 0) return;
+  var q = questions[currentQ];
+  var opt = q.options[selectedOption];
+  answers.push(opt.type);
+  currentQ++;
+  if (currentQ < questions.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizPage').classList.add('hidden');
+  document.getElementById('resultPage').classList.remove('hidden');
+
+  // 统计哪种类型最多
+  var count = {stuck:0, gap:0, connection:0, environment:0};
+  for (var i = 0; i < answers.length; i++) {
+    count[answers[i]]++;
+  }
+  
+  var maxType = 'stuck';
+  var maxCount = 0;
+  for (var t in count) {
+    if (count[t] > maxCount) {
+      maxCount = count[t];
+      maxType = t;
+    }
+  }
+
+  var r = results[maxType];
+  
+  document.getElementById('resultTitle').innerHTML = '你的测试结果出来了';
+  document.getElementById('resultSub').textContent = '曾老师根据20年的观察，帮你看看';
+
+  var html = '';
+  
+  html += '<div class="result-type">';
+  html += '<div class="result-type-label">你家孩子的"不肯学"更接近：</div>';
+  html += '<div class="result-type-name">' + r.name + '</div>';
+  html += '<div class="result-type-desc">' + r.desc + '</div>';
+  html += '</div>';
+
+  html += '<div class="result-suggest">';
+  html += '<div class="result-suggest-label">曾老师的建议：</div>';
+  html += '<div class="result-suggest-text">' + r.suggest + '</div>';
+  html += '</div>';
+
+  html += '<div class="result-quote">';
+  html += '<div class="result-quote-text">"' + r.quote + '"</div>';
+  html += '<div class="result-quote-author">—— 来自文章《每次家长说这句话，我都不敢接话》</div>';
+  html += '</div>';
+
+  // 如果有多个类型并列，提示
+  var types = [];
+  for (var t in count) {
+    if (count[t] === maxCount && count[t] > 1) {
+      types.push(t);
+    }
+  }
+  if (types.length > 1) {
+    html += '<div style="font-size:13px;color:#5a7a9a;margin-top:12px;line-height:1.8;text-align:left;padding:16px;background:#1a2a3a;border-radius:8px;">';
+    html += '你的答案里有几种情况比较接近，说明孩子可能同时面临几个问题。别急着一口气全解决——先从你觉得最可能的那个入手，调一段时间看看效果。';
+    html += '</div>';
+  }
+
+  document.getElementById('resultContent').innerHTML = html;
+}
+</script>
+</body>
+</html>
